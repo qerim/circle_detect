@@ -1,7 +1,5 @@
 #!/usr/bin/python
 
-# Distance estimation
-
 import PIL
 import SimpleCV
 import io
@@ -21,6 +19,7 @@ class PictureWrapper(object):
         if resolution is not None:
             self._camera.resolution = resolution
         else:
+            # Lower resolution = faster processing
             self._camera.resolution = (320, 240)
 
         self._camera.start_preview()
@@ -102,7 +101,6 @@ START       = None
 ITERATIONS  = None
 END         = None
 
-
 def terminate(signal_number, stack_frame):
     print(
         '{iterations} iterations took {seconds} seconds, fps = {fps}'.format(
@@ -135,7 +133,6 @@ def main():
         )
         ITERATIONS += 1
         END = time.time()
-
 
 if __name__ == '__main__':
     main()
